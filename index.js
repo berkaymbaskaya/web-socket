@@ -11,11 +11,6 @@ const io = new Server(server,{
 });
 
 app.use(cors());
-//
-app.get('/deneme', (req, res) => {
-	//   res.sendFile(__dirname + '/index.html');
-	res.send("abc")
-});
 const mudurlukler = [
 	{
 		"No": "1",
@@ -139,8 +134,6 @@ const mudurlukler = [
 		"users":[]
 	}
 ];
-
-
 // Odaları oluşturma
 const rooms = {};
 mudurlukler.forEach(mudurluk => {
@@ -157,7 +150,6 @@ io.on('connection', (socket) => {
 		return;
 	
 	}
-
 	// Kullanıcıyı bir odaya katılma işlemi
 	socket.on('joinRoom', (user) => {
 		console.log("gelen user",user);
@@ -175,7 +167,6 @@ io.on('connection', (socket) => {
 		// DB KAYIT
 		SaveMessage(message)	
 	})
-
 	socket.on('disconnect', () => {
 		console.log('Bir kullanıcı ayrıldı');
 	});
